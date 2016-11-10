@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">DemoApp</string>
+
+    <string name="input_email_hint">Email</string>
+    <string name="input_password_hint">Password</string>
+    <string name="label_login">Login</string>
+    <string name="label_no_account_then_sign_up">No account yet? Create one</string>
+    <string name="title_activity_content">ContentActivity</string>
+    <string name="label_authenticating">Authenticating...</string>
+    <string name="message_authenticating">Authenticating...</string>
+</resources>
