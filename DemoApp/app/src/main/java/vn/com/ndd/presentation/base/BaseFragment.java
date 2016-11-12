@@ -17,16 +17,18 @@ import vn.com.ndd.di.component.ApplicationComponent;
  * for NDD
  * You can contact me at hieunh161@gmail.com
  */
-
 public abstract class BaseFragment extends Fragment {
 
+    /**
+     * The Unbinder.
+     */
     Unbinder unbinder;
 
-    // get component from activity
-//    protected <C> C getComponent(Class<C> componentType){
-//        return componentType.cast(((HasComponent<C>) getActivity()).getComponent());
-//    }
-
+    /**
+     * Gets content view.
+     *
+     * @return the content view
+     */
     protected abstract int getContentView();
 
     @Nullable
@@ -39,9 +41,18 @@ public abstract class BaseFragment extends Fragment {
         return view;
     }
 
+    /**
+     * Resolve dependencies to inject to view
+     */
     protected void resolveDependencies() {
+        // this content will be override by child class
     }
 
+    /**
+     * Gets application component.
+     *
+     * @return the application component
+     */
     protected ApplicationComponent getApplicationComponent() {
         return ((MyApplication)getActivity().getApplication()).getApplicationComponent();
     }

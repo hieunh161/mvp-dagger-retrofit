@@ -3,7 +3,6 @@ package vn.com.ndd.di.component;
 import dagger.Component;
 import vn.com.ndd.di.module.PhotoModule;
 import vn.com.ndd.di.scope.ActivityScope;
-import vn.com.ndd.presentation.activity.MainActivity;
 
 /**
  * Created by hieunh on 11/10/2016.
@@ -13,5 +12,4 @@ import vn.com.ndd.presentation.activity.MainActivity;
 @ActivityScope
 @Component(modules = PhotoModule.class, dependencies = ApplicationComponent.class)
 public interface PhotoComponent {
-    void inject(MainActivity activity);
 }

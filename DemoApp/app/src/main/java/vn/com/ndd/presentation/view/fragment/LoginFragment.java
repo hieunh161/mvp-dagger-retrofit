@@ -3,7 +3,6 @@ package vn.com.ndd.presentation.view.fragment;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.widget.EditText;
 
@@ -14,7 +13,7 @@ import butterknife.OnClick;
 import vn.com.ndd.R;
 import vn.com.ndd.di.component.DaggerLoginComponent;
 import vn.com.ndd.di.module.LoginModule;
-import vn.com.ndd.presentation.activity.MainActivity;
+import vn.com.ndd.presentation.activity.PhotoListActivity;
 import vn.com.ndd.presentation.base.BaseFragment;
 import vn.com.ndd.presentation.presenter.LoginPresenter;
 import vn.com.ndd.presentation.view.LoginView;
@@ -36,14 +35,10 @@ public class LoginFragment extends BaseFragment implements LoginView{
     LoginPresenter mLoginPresenter;
 
     private ProgressDialog mProgressDialog;
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @Override
     protected int getContentView() {
-        return R.layout.activity_login;
+        return R.layout.fragment_login;
     }
 
     /**
@@ -54,6 +49,7 @@ public class LoginFragment extends BaseFragment implements LoginView{
         mLoginPresenter.authenticate(mInputEmail.getText().toString(), mInputPassword.getText().toString());
     }
 
+    @Override
     protected void resolveDependencies() {
         DaggerLoginComponent.builder()
                 .applicationComponent(getApplicationComponent())
@@ -99,7 +95,8 @@ public class LoginFragment extends BaseFragment implements LoginView{
 
     @Override
     public void navigateToMain() {
-        Intent intent = new Intent(getActivity(), MainActivity.class);
+        Intent intent = new Intent(getActivity(), PhotoListActivity.class);
         startActivity(intent);
+        // getActivity().finish();
     }
 }
