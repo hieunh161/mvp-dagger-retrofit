@@ -3,9 +3,9 @@ package vn.com.ndd.di.module;
 import dagger.Module;
 import dagger.Provides;
 import retrofit2.Retrofit;
-import vn.com.ndd.api.login.LoginApiService;
+import vn.com.ndd.data.rest.LoginApiService;
 import vn.com.ndd.di.scope.ActivityScope;
-import vn.com.ndd.mvp.view.LoginView;
+import vn.com.ndd.presentation.view.LoginView;
 
 /**
  * Created by hieunh on 11/10/2016.

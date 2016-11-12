@@ -3,7 +3,7 @@ package vn.com.ndd.di.component;
 import dagger.Component;
 import vn.com.ndd.di.module.LoginModule;
 import vn.com.ndd.di.scope.ActivityScope;
-import vn.com.ndd.module.login.LoginActivity;
+import vn.com.ndd.presentation.view.fragment.LoginFragment;
 
 /**
  * Created by hieunh on 11/10/2016.
@@ -13,5 +13,5 @@ import vn.com.ndd.module.login.LoginActivity;
 @ActivityScope
 @Component(modules = LoginModule.class, dependencies = ApplicationComponent.class)
 public interface LoginComponent {
-    void inject(LoginActivity activity);
+    void inject(LoginFragment fragment);
 }

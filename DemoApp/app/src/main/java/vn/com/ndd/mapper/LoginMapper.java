@@ -2,8 +2,8 @@ package vn.com.ndd.mapper;
 
 import javax.inject.Inject;
 
-import vn.com.ndd.api.login.LoginResponse;
-import vn.com.ndd.mvp.model.LoginStatus;
+import vn.com.ndd.data.entity.LoginResponse;
+import vn.com.ndd.presentation.model.LoginStatus;
 
 /**
  * Created by hieunh on 11/11/2016.

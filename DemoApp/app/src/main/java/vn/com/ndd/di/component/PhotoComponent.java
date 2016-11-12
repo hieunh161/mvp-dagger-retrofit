@@ -3,7 +3,7 @@ package vn.com.ndd.di.component;
 import dagger.Component;
 import vn.com.ndd.di.module.PhotoModule;
 import vn.com.ndd.di.scope.ActivityScope;
-import vn.com.ndd.module.main.MainActivity;
+import vn.com.ndd.presentation.activity.MainActivity;
 
 /**
  * Created by hieunh on 11/10/2016.

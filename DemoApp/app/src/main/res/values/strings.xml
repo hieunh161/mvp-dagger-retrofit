@@ -8,4 +8,9 @@
     <string name="title_activity_content">ContentActivity</string>
     <string name="label_authenticating">Authenticating...</string>
     <string name="message_authenticating">Authenticating...</string>
+    <string name="exception_message_generic">Exception has happened</string>
+    <string name="exception_message_no_connection">Network is not available</string>
+    <string name="dialog_title_error">Error</string>
+    <string name="dialog_message_network_not_available">Network is not available</string>
+    <string name="btn_ok">Ok</string>
 </resources>

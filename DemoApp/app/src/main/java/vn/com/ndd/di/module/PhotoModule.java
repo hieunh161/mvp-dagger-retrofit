@@ -3,7 +3,7 @@ package vn.com.ndd.di.module;
 import dagger.Module;
 import dagger.Provides;
 import retrofit2.Retrofit;
-import vn.com.ndd.api.photo.PhotoApiService;
+import vn.com.ndd.data.rest.PhotoApiService;
 import vn.com.ndd.di.scope.ActivityScope;
 
 /**
