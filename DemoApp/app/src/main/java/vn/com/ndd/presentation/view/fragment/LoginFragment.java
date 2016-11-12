@@ -94,9 +94,14 @@ public class LoginFragment extends BaseFragment implements LoginView{
     }
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mLoginPresenter.destroy();
+    }
+
+    @Override
     public void navigateToMain() {
         Intent intent = new Intent(getActivity(), PhotoListActivity.class);
         startActivity(intent);
-        // getActivity().finish();
     }
 }

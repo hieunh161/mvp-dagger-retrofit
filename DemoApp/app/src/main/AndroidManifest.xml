@@ -23,6 +23,8 @@
         </activity>
         <activity android:name=".presentation.activity.PhotoListActivity">
         </activity>
+        <activity android:name=".presentation.activity.SettingActivity">
+        </activity>
     </application>
 
 </manifest>

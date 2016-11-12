@@ -13,4 +13,7 @@
     <string name="dialog_title_error">Error</string>
     <string name="dialog_message_network_not_available">Network is not available</string>
     <string name="btn_ok">Ok</string>
+    <string name="title_menu_setting">Setting</string>
+    <string name="input_server_address">Server Url</string>
+    <string name="dialog_message_login_fail">Login Fail</string>
 </resources>

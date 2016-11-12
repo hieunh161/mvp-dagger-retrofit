@@ -8,11 +8,11 @@ import javax.inject.Inject;
 import rx.Observable;
 import rx.Observer;
 import vn.com.ndd.R;
-import vn.com.ndd.presentation.base.BasePresenter;
 import vn.com.ndd.data.entity.LoginAccount;
 import vn.com.ndd.data.entity.LoginResponse;
-import vn.com.ndd.data.rest.LoginApiService;
+import vn.com.ndd.domain.interactor.LoginUseCase;
 import vn.com.ndd.mapper.LoginMapper;
+import vn.com.ndd.presentation.base.BasePresenter;
 import vn.com.ndd.presentation.model.LoginStatus;
 import vn.com.ndd.presentation.view.LoginView;
 import vn.com.ndd.utils.NetworkUtils;
@@ -23,11 +23,8 @@ import vn.com.ndd.utils.NetworkUtils;
  * You can contact me at hieunh161@gmail.com
  */
 public class LoginPresenter extends BasePresenter<LoginView> implements Observer<LoginResponse> {
-    /**
-     * The M login api service.
-     */
     @Inject
-    LoginApiService mLoginApiService;
+    LoginUseCase mLoginUseCase;
 
     /**
      * The M mapper.
@@ -60,8 +57,9 @@ public class LoginPresenter extends BasePresenter<LoginView> implements Observer
         }
         Log.d("LoginPresenter","login running"+ username + password);
         getView().showProgressDialog(context.getString(R.string.message_authenticating));
-        Observable<LoginResponse> observable = mLoginApiService.authenticate(new LoginAccount(username, password));
-        subscribe(observable, this);
+        // pass login account to use case in domain layer
+        mLoginUseCase.setAccount(new LoginAccount(username, password));
+        mLoginUseCase.subscribe(this);
     }
 
     /**
@@ -72,7 +70,7 @@ public class LoginPresenter extends BasePresenter<LoginView> implements Observer
     @Override
     public void onCompleted() {
         Log.d("LoginPresenter","onCompleted");
-        getView().hideProgressDialog();
+        // getView().hideProgressDialog();
     }
 
     /**
@@ -87,6 +85,8 @@ public class LoginPresenter extends BasePresenter<LoginView> implements Observer
     public void onError(Throwable e) {
         Log.d("LoginPresenter","onError " + e.toString());
         getView().hideProgressDialog();
+        // show error dialog
+        getView().showDialogLoginError(R.string.dialog_title_error, R.string.dialog_message_login_fail);
     }
 
     /**
@@ -103,8 +103,20 @@ public class LoginPresenter extends BasePresenter<LoginView> implements Observer
     public void onNext(LoginResponse loginResponse) {
         Log.d("LoginPresenter","onError " + loginResponse.getStatus());
         LoginStatus loginStatus = mMapper.mapLoginResponse(loginResponse);
+        getView().hideProgressDialog();
         if(loginStatus.isSuccess()){
             getView().navigateToMain();
+        } else {
+            getView().showDialogLoginError(R.string.dialog_title_error, R.string.dialog_message_login_fail);
         }
+    }
+
+    /**
+     * Method that control the lifecycle of the view. It should be called in the view's
+     * (Activity or Fragment) onDestroy() method.
+     */
+    @Override
+    public void destroy() {
+        mLoginUseCase.unsubscribe();
     }
 }
