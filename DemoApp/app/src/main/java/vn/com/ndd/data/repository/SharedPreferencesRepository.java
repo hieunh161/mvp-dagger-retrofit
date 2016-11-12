@@ -1,5 +1,6 @@
 package vn.com.ndd.data.repository;
 
+import rx.Observable;
 import vn.com.ndd.data.entity.Setting;
 
 /**
@@ -14,12 +15,12 @@ public interface SharedPreferencesRepository {
      *
      * @return the setting
      */
-    Setting getSetting();
+    Observable<Setting> getSetting();
 
     /**
      * Save setting.
      *
      * @param setting the setting
      */
-    void saveSetting(Setting setting);
+    Observable<Boolean> saveSetting(Setting setting);
 }

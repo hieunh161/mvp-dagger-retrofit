@@ -55,7 +55,6 @@ public class LoginFragment extends BaseFragment implements LoginView{
                 .applicationComponent(getApplicationComponent())
                 .loginModule(new LoginModule(this)).build().inject(this);
     }
-
     @Override
     public void showProgressDialog(String message) {
         if (mProgressDialog == null) {
@@ -73,9 +72,8 @@ public class LoginFragment extends BaseFragment implements LoginView{
             mProgressDialog.dismiss();
         }
     }
-
     @Override
-    public void showDialogLoginError(int title, int message) {
+    public void showErrorDialog(int title, int message) {
         // 1. Instantiate an AlertDialog.Builder with its constructor
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         // 2. Chain together various setter methods to set the dialog characteristics

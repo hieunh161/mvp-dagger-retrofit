@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import rx.Observable;
 import vn.com.ndd.data.entity.Setting;
 import vn.com.ndd.data.repository.SharedPreferencesRepository;
 import vn.com.ndd.utils.Constants;
@@ -25,16 +26,17 @@ public class SharedPreferencesRepositoryImpl implements SharedPreferencesReposit
     }
 
     @Override
-    public Setting getSetting() {
+    public Observable<Setting> getSetting() {
         Setting setting = new Setting();
         setting.setBaseUrl(mPrefs.getString(KEY_PREF_BASE_URL, Constants.BASE_URL));
-        return setting;
+        return Observable.just(setting);
     }
 
     @Override
-    public void saveSetting(Setting setting) {
+    public Observable<Boolean> saveSetting(Setting setting) {
         SharedPreferences.Editor editor = mPrefs.edit();
         editor.putString(KEY_PREF_BASE_URL, setting.getBaseUrl());
         editor.apply();
+        return Observable.just(Boolean.TRUE);
     }
 }

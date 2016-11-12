@@ -20,7 +20,7 @@ public interface LoginView extends BaseView {
      */
     void hideProgressDialog();
 
-    void showDialogLoginError(int title, int message);
+    void showErrorDialog(int title, int message);
 
     /**
      * Navigate to main.

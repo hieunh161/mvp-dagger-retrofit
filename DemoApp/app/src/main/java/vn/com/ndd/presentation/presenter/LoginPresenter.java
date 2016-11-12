@@ -22,7 +22,7 @@ import vn.com.ndd.utils.NetworkUtils;
  * for NDD
  * You can contact me at hieunh161@gmail.com
  */
-public class LoginPresenter extends BasePresenter<LoginView> implements Observer<LoginResponse> {
+public class LoginPresenter extends BasePresenter<LoginView> {
     @Inject
     LoginUseCase mLoginUseCase;
 
@@ -52,64 +52,16 @@ public class LoginPresenter extends BasePresenter<LoginView> implements Observer
      */
     public void authenticate(String username, String password) {
         if(!NetworkUtils.isNetworkAvailable(context)){
-            getView().showDialogLoginError(R.string.dialog_title_error, R.string.dialog_message_network_not_available);
+            getView().showErrorDialog(R.string.dialog_title_error, R.string.dialog_message_network_not_available);
             return;
         }
         Log.d("LoginPresenter","login running"+ username + password);
         getView().showProgressDialog(context.getString(R.string.message_authenticating));
         // pass login account to use case in domain layer
-        mLoginUseCase.setAccount(new LoginAccount(username, password));
-        mLoginUseCase.subscribe(this);
+        mLoginUseCase.setLoginObservable(new LoginAccount(username, password));
+        mLoginUseCase.subscribe(loginObserver);
     }
 
-    /**
-     * Notifies the Observer that the {@link Observable} has finished sending push-based notifications.
-     * <p>
-     * The {@link Observable} will not call this method if it calls {@link #onError}.
-     */
-    @Override
-    public void onCompleted() {
-        Log.d("LoginPresenter","onCompleted");
-        // getView().hideProgressDialog();
-    }
-
-    /**
-     * Notifies the Observer that the {@link Observable} has experienced an error condition.
-     * <p>
-     * If the {@link Observable} calls this method, it will not thereafter call {@link #onNext} or
-     * {@link #onCompleted}.
-     *
-     * @param e the exception encountered by the Observable
-     */
-    @Override
-    public void onError(Throwable e) {
-        Log.d("LoginPresenter","onError " + e.toString());
-        getView().hideProgressDialog();
-        // show error dialog
-        getView().showDialogLoginError(R.string.dialog_title_error, R.string.dialog_message_login_fail);
-    }
-
-    /**
-     * Provides the Observer with a new item to observe.
-     * <p>
-     * The {@link Observable} may call this method 0 or more times.
-     * <p>
-     * The {@code Observable} will not call this method again after it calls either {@link #onCompleted} or
-     * {@link #onError}.
-     *
-     * @param loginResponse the item emitted by the Observable
-     */
-    @Override
-    public void onNext(LoginResponse loginResponse) {
-        Log.d("LoginPresenter","onError " + loginResponse.getStatus());
-        LoginStatus loginStatus = mMapper.mapLoginResponse(loginResponse);
-        getView().hideProgressDialog();
-        if(loginStatus.isSuccess()){
-            getView().navigateToMain();
-        } else {
-            getView().showDialogLoginError(R.string.dialog_title_error, R.string.dialog_message_login_fail);
-        }
-    }
 
     /**
      * Method that control the lifecycle of the view. It should be called in the view's
@@ -119,4 +71,54 @@ public class LoginPresenter extends BasePresenter<LoginView> implements Observer
     public void destroy() {
         mLoginUseCase.unsubscribe();
     }
+
+    Observer<LoginResponse> loginObserver = new Observer<LoginResponse>() {
+        /**
+         * Notifies the Observer that the {@link Observable} has finished sending push-based notifications.
+         * <p>
+         * The {@link Observable} will not call this method if it calls {@link #onError}.
+         */
+        @Override
+        public void onCompleted() {
+            Log.d("LoginPresenter","onCompleted");
+        }
+
+        /**
+         * Notifies the Observer that the {@link Observable} has experienced an error condition.
+         * <p>
+         * If the {@link Observable} calls this method, it will not thereafter call {@link #onNext} or
+         * {@link #onCompleted}.
+         *
+         * @param e the exception encountered by the Observable
+         */
+        @Override
+        public void onError(Throwable e) {
+            Log.d("LoginPresenter","onError " + e.toString());
+            getView().hideProgressDialog();
+            // show error dialog
+            getView().showErrorDialog(R.string.dialog_title_error, R.string.dialog_message_login_fail);
+        }
+
+        /**
+         * Provides the Observer with a new item to observe.
+         * <p>
+         * The {@link Observable} may call this method 0 or more times.
+         * <p>
+         * The {@code Observable} will not call this method again after it calls either {@link #onCompleted} or
+         * {@link #onError}.
+         *
+         * @param loginResponse the item emitted by the Observable
+         */
+        @Override
+        public void onNext(LoginResponse loginResponse) {
+            Log.d("LoginPresenter","onError " + loginResponse.getStatus());
+            LoginStatus loginStatus = mMapper.mapLoginResponse(loginResponse);
+            getView().hideProgressDialog();
+            if(loginStatus.isSuccess()){
+                getView().navigateToMain();
+            } else {
+                getView().showErrorDialog(R.string.dialog_title_error, R.string.dialog_message_login_fail);
+            }
+        }
+    };
 }

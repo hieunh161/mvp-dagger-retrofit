@@ -16,4 +16,5 @@
     <string name="title_menu_setting">Setting</string>
     <string name="input_server_address">Server Url</string>
     <string name="dialog_message_login_fail">Login Fail</string>
+    <string name="label_save_setting">Save</string>
 </resources>

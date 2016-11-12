@@ -20,6 +20,8 @@ public abstract class UseCase {
     // use for un-subscribe
     private Subscription subscription = Subscriptions.empty();
 
+    private Observable observable;
+
     /**
      * Subscribe.
      *
@@ -27,7 +29,7 @@ public abstract class UseCase {
      * @param observer the observer
      */
     public <T> void subscribe(Observer<T> observer) {
-        this.subscription = buildUseCaseObservable()
+        this.subscription = getObservable()
                 .subscribeOn(Schedulers.newThread())
                 // .toSingle()
                 .observeOn(AndroidSchedulers.mainThread())
@@ -48,7 +50,14 @@ public abstract class UseCase {
      *
      * @return the observable
      */
-    protected abstract Observable buildUseCaseObservable();
+    // protected abstract Observable buildUseCaseObservable();
 
 
+    public Observable getObservable() {
+        return observable;
+    }
+
+    public void setObservable(Observable observable) {
+        this.observable = observable;
+    }
 }

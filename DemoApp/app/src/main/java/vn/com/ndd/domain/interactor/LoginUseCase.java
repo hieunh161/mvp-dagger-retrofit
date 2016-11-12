@@ -2,7 +2,6 @@ package vn.com.ndd.domain.interactor;
 
 import javax.inject.Inject;
 
-import rx.Observable;
 import vn.com.ndd.data.entity.LoginAccount;
 import vn.com.ndd.data.rest.LoginApiService;
 
@@ -19,28 +18,19 @@ public class LoginUseCase extends UseCase{
     @Inject
     LoginApiService mLoginApiService;
 
-    private LoginAccount account;
-
+    /**
+     * Instantiates a new Login use case.
+     */
     @Inject
     public LoginUseCase() {
     }
 
     /**
-     * Build use case observable observable.
-     *
-     * @return the observable
-     */
-    @Override
-    protected Observable buildUseCaseObservable() {
-        return mLoginApiService.authenticate(account);
-    }
-
-    /**
-     * Sets account.
+     * Set login observable.
      *
      * @param account the account
      */
-    public void setAccount(LoginAccount account) {
-        this.account = account;
+    public void setLoginObservable(LoginAccount account){
+        setObservable(mLoginApiService.authenticate(account));
     }
 }
