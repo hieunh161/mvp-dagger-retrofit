@@ -12,22 +12,40 @@ import vn.com.ndd.presentation.view.LoginView;
  * for NDD
  * You can contact me at hieunh161@gmail.com
  */
-
 @Module
 public class LoginModule {
 
+    /**
+     * The M view.
+     */
     LoginView mView;
 
+    /**
+     * Instantiates a new Login module.
+     *
+     * @param view the view
+     */
     public LoginModule(LoginView view){
         this.mView = view;
     }
 
+    /**
+     * Get login api service login api service.
+     *
+     * @param retrofit the retrofit
+     * @return the login api service
+     */
     @ActivityScope
     @Provides
     LoginApiService getLoginApiService(Retrofit retrofit){
         return retrofit.create(LoginApiService.class);
     }
 
+    /**
+     * Provide login view login view.
+     *
+     * @return the login view
+     */
     @ActivityScope
     @Provides
     LoginView provideLoginView(){

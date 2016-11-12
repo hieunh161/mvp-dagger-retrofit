@@ -10,7 +10,6 @@ import vn.com.ndd.presentation.view.fragment.LoginFragment;
  * for NDD
  * You can contact me at hieunh161@gmail.com
  */
-
 public class LoginActivity extends BaseActivity {
 
     @Override

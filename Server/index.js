@@ -24,12 +24,14 @@ var loginStatus = [
 ]
 
 app.get("/api/photo/list", function (req, res, next) {
-    var authenCode = req.body.authcode;
-    if(authenCode == AUTHEN_CODE){
-        res.json(photoList);
-    }else {
-        res.json([]);
-    }
+    console.log("get photo list");
+    res.json(photoList);
+    // var authenCode = req.body.authcode;
+    // if(authenCode == AUTHEN_CODE){
+    //     res.json(photoList);
+    // }else {
+    //     res.json([]);
+    // }
 });
 
 app.post("/api/login", function (req, res, next) {

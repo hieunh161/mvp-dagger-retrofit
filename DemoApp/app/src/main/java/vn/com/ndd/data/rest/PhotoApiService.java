@@ -1,5 +1,7 @@
 package vn.com.ndd.data.rest;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
@@ -16,12 +18,12 @@ public interface PhotoApiService {
     @Headers({
             "Accept: application/json"
     })
-    @GET("/photos")
-    Observable<PhotoResponse> getPhotos();
+    @GET("/api/photo/list")
+    Observable<List<PhotoResponse>> getPhotos();
 
     @Headers({
             "Accept: application/json"
     })
-    @GET("/photos")
-    Call<PhotoResponse> getPhotosWithCall();
+    @GET("/api/photo/list")
+    Call<List<PhotoResponse>> getPhotosWithCall();
 }

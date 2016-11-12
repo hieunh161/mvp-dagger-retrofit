@@ -2,6 +2,8 @@ package vn.com.ndd.presentation.activity;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -17,6 +19,16 @@ import vn.com.ndd.presentation.view.fragment.PhotoListFragment;
 public class PhotoListActivity extends BaseActivity {
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // set back button on actionBar
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null){
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    @Override
     protected Fragment getFragment() {
         return new PhotoListFragment();
     }
@@ -29,14 +41,17 @@ public class PhotoListActivity extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // return super.onOptionsItemSelected(item);
         switch (item.getItemId()) {
             case R.id.menu_setting:
                 navigateToSetting();
-                return true;
+                break;
+            case android.R.id.home:
+                finish();
+                break;
             default:
-                return true;
+                break;
         }
+        return super.onOptionsItemSelected(item);
     }
 
     private void navigateToSetting() {

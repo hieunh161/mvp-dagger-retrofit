@@ -21,6 +21,14 @@ public interface SharedPreferencesRepository {
      * Save setting.
      *
      * @param setting the setting
+     * @return the observable
      */
-    Observable<Boolean> saveSetting(Setting setting);
+    Observable<Void> saveSetting(Setting setting);
+
+    /**
+     * Gets base url.
+     *
+     * @return the base url
+     */
+    Observable<String> getBaseUrl();
 }

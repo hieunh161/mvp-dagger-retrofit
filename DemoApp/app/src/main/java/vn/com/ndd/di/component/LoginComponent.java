@@ -13,5 +13,10 @@ import vn.com.ndd.presentation.view.fragment.LoginFragment;
 @ActivityScope
 @Component(modules = LoginModule.class, dependencies = ApplicationComponent.class)
 public interface LoginComponent {
+    /**
+     * Inject.
+     *
+     * @param fragment the fragment
+     */
     void inject(LoginFragment fragment);
 }

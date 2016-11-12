@@ -7,6 +7,6 @@ package vn.com.ndd.utils;
  */
 
 public class Constants {
-    public static final String BASE_URL = "http://192.168.100.101:3000";
+    public static final String BASE_URL = "http://192.168.100.100:3000";
     public static final String KEY_PREF_BASE_URL = "KEY_PREF_BASE_URL";
 }

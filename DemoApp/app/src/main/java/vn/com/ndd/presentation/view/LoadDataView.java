@@ -3,11 +3,12 @@ package vn.com.ndd.presentation.view;
 import vn.com.ndd.presentation.base.BaseView;
 
 /**
- * Created by hieunh on 11/10/2016.
+ * Created by hieunh on 11/13/2016.
  * for NDD
  * You can contact me at hieunh161@gmail.com
  */
-public interface LoginView extends BaseView {
+
+public interface LoadDataView extends BaseView {
     /**
      * Show progress dialog.
      *
@@ -18,7 +19,7 @@ public interface LoginView extends BaseView {
     /**
      * Hide progress dialog.
      */
-    void hideProgressDialog();
+    void dismissProgressDialog();
 
     /**
      * Show error dialog.
@@ -27,9 +28,4 @@ public interface LoginView extends BaseView {
      * @param message the message
      */
     void showErrorDialog(int title, int message);
-
-    /**
-     * Navigate to main.
-     */
-    void navigateToMain();
 }

@@ -22,6 +22,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_layout);
         initializeActivity(savedInstanceState);
+
     }
 
     private void initializeActivity(Bundle savedInstanceState) {

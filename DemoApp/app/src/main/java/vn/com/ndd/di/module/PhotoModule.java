@@ -14,6 +14,12 @@ import vn.com.ndd.di.scope.ActivityScope;
 @Module
 public class PhotoModule {
 
+    /**
+     * Provide photo api service photo api service.
+     *
+     * @param retrofit the retrofit
+     * @return the photo api service
+     */
     @ActivityScope
     @Provides
     PhotoApiService providePhotoApiService(Retrofit retrofit){

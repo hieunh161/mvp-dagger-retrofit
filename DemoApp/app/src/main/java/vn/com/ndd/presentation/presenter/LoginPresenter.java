@@ -23,8 +23,11 @@ import vn.com.ndd.utils.NetworkUtils;
  * You can contact me at hieunh161@gmail.com
  */
 public class LoginPresenter extends BasePresenter<LoginView> {
+    /**
+     * The M login use case.
+     */
     @Inject
-    LoginUseCase mLoginUseCase;
+    LoginUseCase mUseCase;
 
     /**
      * The M mapper.
@@ -58,8 +61,8 @@ public class LoginPresenter extends BasePresenter<LoginView> {
         Log.d("LoginPresenter","login running"+ username + password);
         getView().showProgressDialog(context.getString(R.string.message_authenticating));
         // pass login account to use case in domain layer
-        mLoginUseCase.setLoginObservable(new LoginAccount(username, password));
-        mLoginUseCase.subscribe(loginObserver);
+        mUseCase.setLoginObservable(new LoginAccount(username, password));
+        mUseCase.subscribe(loginObserver);
     }
 
 
@@ -69,9 +72,12 @@ public class LoginPresenter extends BasePresenter<LoginView> {
      */
     @Override
     public void destroy() {
-        mLoginUseCase.unsubscribe();
+        mUseCase.unsubscribe();
     }
 
+    /**
+     * The Login observer.
+     */
     Observer<LoginResponse> loginObserver = new Observer<LoginResponse>() {
         /**
          * Notifies the Observer that the {@link Observable} has finished sending push-based notifications.
