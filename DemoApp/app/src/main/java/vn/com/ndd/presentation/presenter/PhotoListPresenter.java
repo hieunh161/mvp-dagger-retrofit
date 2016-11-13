@@ -11,7 +11,7 @@ import rx.Observer;
 import vn.com.ndd.R;
 import vn.com.ndd.data.entity.PhotoResponse;
 import vn.com.ndd.domain.interactor.PhotoListUseCase;
-import vn.com.ndd.mapper.PhotoMapper;
+import vn.com.ndd.presentation.mapper.PhotoMapper;
 import vn.com.ndd.presentation.base.BasePresenter;
 import vn.com.ndd.presentation.model.Photo;
 import vn.com.ndd.presentation.view.PhotoListView;

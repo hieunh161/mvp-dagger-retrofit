@@ -17,6 +17,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            testCoverageEnabled = true
+        }
     }
 }
 
@@ -47,5 +50,27 @@ dependencies {
 
     testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-core:2.2.11'
-    testCompile 'org.hamcrest:hamcrest-all:1.3'
+    testCompile 'org.robolectric:robolectric:3.1.4'
+    // Espresso core
+    testCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
+    // Espresso-contrib for DatePicker, RecyclerView, Drawer actions, Accessibility checks, CountingIdlingResource
+    testCompile('com.android.support.test.espresso:espresso-contrib:2.2.2') {
+        exclude group: 'com.android.support'
+    }
+    // Espresso-web for WebView support
+    testCompile('com.android.support.test.espresso:espresso-web:2.2.2') {
+        exclude group: 'com.android.support'
+    }
+    // Espresso-idling-resource for synchronization with background jobs
+    testCompile('com.android.support.test.espresso:espresso-idling-resource:2.2.2') {
+        exclude group: 'com.android.support'
+    }
+    // Espresso-intents for validation and stubbing of Intents
+    testCompile('com.android.support.test.espresso:espresso-intents:2.2.2') {
+        exclude group: 'com.android.support'
+    }
+    // UiAutomator
+    testCompile 'com.android.support.test.uiautomator:uiautomator-v18:2.1.2'
+    testCompile 'com.android.support.test:runner:0.5'
+    testCompile 'com.android.support:support-annotations:25.0.0'
 }

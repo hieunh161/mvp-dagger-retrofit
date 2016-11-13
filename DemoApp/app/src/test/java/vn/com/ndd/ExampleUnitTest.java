@@ -2,7 +2,8 @@ package vn.com.ndd;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -12,6 +13,6 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
+        assertThat(4, is(2+2));
     }
 }

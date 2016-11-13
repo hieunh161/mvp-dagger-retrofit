@@ -22,7 +22,7 @@ public class MyApplication extends Application {
         initializeApplicationComponent();
     }
 
-    private void initializeApplicationComponent() {
+    protected void initializeApplicationComponent() {
         mApplicationComponent = DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(getApplicationContext()))
                 .build();

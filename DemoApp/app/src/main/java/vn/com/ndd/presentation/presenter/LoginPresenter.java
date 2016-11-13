@@ -11,7 +11,7 @@ import vn.com.ndd.R;
 import vn.com.ndd.data.entity.LoginAccount;
 import vn.com.ndd.data.entity.LoginResponse;
 import vn.com.ndd.domain.interactor.LoginUseCase;
-import vn.com.ndd.mapper.LoginMapper;
+import vn.com.ndd.presentation.mapper.LoginMapper;
 import vn.com.ndd.presentation.base.BasePresenter;
 import vn.com.ndd.presentation.model.LoginStatus;
 import vn.com.ndd.presentation.view.LoginView;

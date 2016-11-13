@@ -1,4 +1,4 @@
-package vn.com.ndd.mapper;
+package vn.com.ndd.presentation.mapper;
 
 import java.util.ArrayList;
 import java.util.List;
