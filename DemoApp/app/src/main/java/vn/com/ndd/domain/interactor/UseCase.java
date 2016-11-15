@@ -50,7 +50,6 @@ public abstract class UseCase {
      *
      * @return the observable
      */
-    // protected abstract Observable buildUseCaseObservable();
 
 
     public Observable getObservable() {

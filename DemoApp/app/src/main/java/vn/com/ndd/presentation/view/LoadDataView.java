@@ -7,14 +7,13 @@ import vn.com.ndd.presentation.base.BaseView;
  * for NDD
  * You can contact me at hieunh161@gmail.com
  */
-
 public interface LoadDataView extends BaseView {
     /**
      * Show progress dialog.
      *
-     * @param message the message
+     * @param messageId the message id
      */
-    void showProgressDialog(String message);
+    void showProgressDialog(int messageId);
 
     /**
      * Hide progress dialog.

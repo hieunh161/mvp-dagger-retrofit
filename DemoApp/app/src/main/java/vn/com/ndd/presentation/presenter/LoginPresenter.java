@@ -1,6 +1,5 @@
 package vn.com.ndd.presentation.presenter;
 
-import android.content.Context;
 import android.util.Log;
 
 import javax.inject.Inject;
@@ -11,11 +10,10 @@ import vn.com.ndd.R;
 import vn.com.ndd.data.entity.LoginAccount;
 import vn.com.ndd.data.entity.LoginResponse;
 import vn.com.ndd.domain.interactor.LoginUseCase;
-import vn.com.ndd.presentation.mapper.LoginMapper;
 import vn.com.ndd.presentation.base.BasePresenter;
+import vn.com.ndd.presentation.mapper.LoginMapper;
 import vn.com.ndd.presentation.model.LoginStatus;
 import vn.com.ndd.presentation.view.LoginView;
-import vn.com.ndd.utils.NetworkUtils;
 
 /**
  * Created by hieunh on 11/10/2016.
@@ -36,12 +34,6 @@ public class LoginPresenter extends BasePresenter<LoginView> {
     LoginMapper mMapper;
 
     /**
-     * The Context.
-     */
-    @Inject
-    Context context;
-
-    /**
      * Instantiates a new Login presenter.
      */
     @Inject
@@ -54,12 +46,8 @@ public class LoginPresenter extends BasePresenter<LoginView> {
      * @param password the password
      */
     public void authenticate(String username, String password) {
-        if(!NetworkUtils.isNetworkAvailable(context)){
-            getView().showErrorDialog(R.string.dialog_title_error, R.string.dialog_message_network_not_available);
-            return;
-        }
         Log.d("LoginPresenter","login running"+ username + password);
-        getView().showProgressDialog(context.getString(R.string.message_authenticating));
+        getView().showProgressDialog(R.string.message_authenticating);
         // pass login account to use case in domain layer
         mUseCase.setLoginObservable(new LoginAccount(username, password));
         mUseCase.subscribe(loginObserver);
@@ -100,7 +88,7 @@ public class LoginPresenter extends BasePresenter<LoginView> {
         @Override
         public void onError(Throwable e) {
             Log.d("LoginPresenter","onError " + e.toString());
-            getView().hideProgressDialog();
+            getView().dismissProgressDialog();
             // show error dialog
             getView().showErrorDialog(R.string.dialog_title_error, R.string.dialog_message_login_fail);
         }
@@ -119,7 +107,7 @@ public class LoginPresenter extends BasePresenter<LoginView> {
         public void onNext(LoginResponse loginResponse) {
             Log.d("LoginPresenter","onError " + loginResponse.getStatus());
             LoginStatus loginStatus = mMapper.mapLoginResponse(loginResponse);
-            getView().hideProgressDialog();
+            getView().dismissProgressDialog();
             if(loginStatus.isSuccess()){
                 getView().navigateToMain();
             } else {

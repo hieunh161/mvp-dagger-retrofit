@@ -56,18 +56,18 @@ public class LoginFragment extends BaseFragment implements LoginView{
                 .loginModule(new LoginModule(this)).build().inject(this);
     }
     @Override
-    public void showProgressDialog(String message) {
+    public void showProgressDialog(int messageId) {
         if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(getActivity());
             mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             mProgressDialog.setCancelable(true);
         }
-        mProgressDialog.setMessage(message);
+        mProgressDialog.setMessage(getActivity().getString(messageId));
         mProgressDialog.show();
     }
 
     @Override
-    public void hideProgressDialog() {
+    public void dismissProgressDialog() {
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.dismiss();
         }

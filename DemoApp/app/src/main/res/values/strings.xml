@@ -17,4 +17,5 @@
     <string name="input_server_address">Server Url</string>
     <string name="dialog_message_login_fail">Login Fail</string>
     <string name="label_save_setting">Save</string>
+    <string name="label_photo_list_title">Hello Photo List!</string>
 </resources>

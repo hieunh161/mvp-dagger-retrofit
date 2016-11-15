@@ -73,13 +73,13 @@ public class PhotoListFragment extends BaseFragment implements PhotoListView {
     }
 
     @Override
-    public void showProgressDialog(String message) {
+    public void showProgressDialog(int messageId) {
         if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(getActivity());
             mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             mProgressDialog.setCancelable(true);
         }
-        mProgressDialog.setMessage(message);
+        mProgressDialog.setMessage(getActivity().getString(messageId));
         mProgressDialog.show();
     }
 

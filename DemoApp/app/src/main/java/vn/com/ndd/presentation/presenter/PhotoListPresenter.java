@@ -1,6 +1,5 @@
 package vn.com.ndd.presentation.presenter;
 
-import android.content.Context;
 import android.util.Log;
 
 import java.util.List;
@@ -11,11 +10,10 @@ import rx.Observer;
 import vn.com.ndd.R;
 import vn.com.ndd.data.entity.PhotoResponse;
 import vn.com.ndd.domain.interactor.PhotoListUseCase;
-import vn.com.ndd.presentation.mapper.PhotoMapper;
 import vn.com.ndd.presentation.base.BasePresenter;
+import vn.com.ndd.presentation.mapper.PhotoMapper;
 import vn.com.ndd.presentation.model.Photo;
 import vn.com.ndd.presentation.view.PhotoListView;
-import vn.com.ndd.utils.NetworkUtils;
 
 /**
  * Created by hieunh on 11/13/2016.
@@ -32,11 +30,7 @@ public class PhotoListPresenter extends BasePresenter<PhotoListView> {
 
     @Inject
     PhotoMapper mMapper;
-    /**
-     * The Context.
-     */
-    @Inject
-    Context context;
+
     private Observer<List<PhotoResponse>> photoListObserver = new Observer<List<PhotoResponse>>() {
         @Override
         public void onCompleted() {
@@ -66,11 +60,7 @@ public class PhotoListPresenter extends BasePresenter<PhotoListView> {
     }
 
     public void loadPhotos() {
-        if (!NetworkUtils.isNetworkAvailable(context)) {
-            getView().showErrorDialog(R.string.dialog_title_error, R.string.dialog_message_network_not_available);
-            return;
-        }
-        getView().showProgressDialog(context.getString(R.string.message_authenticating));
+        getView().showProgressDialog(R.string.message_authenticating);
         // pass login account to use case in domain layer
         mUseCase.setPhotoListObserver();
         mUseCase.subscribe(photoListObserver);

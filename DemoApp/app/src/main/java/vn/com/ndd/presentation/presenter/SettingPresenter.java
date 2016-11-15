@@ -1,7 +1,5 @@
 package vn.com.ndd.presentation.presenter;
 
-import android.content.Context;
-
 import javax.inject.Inject;
 
 import rx.Observer;
@@ -21,12 +19,6 @@ public class SettingPresenter extends BasePresenter<SettingView>{
      */
     @Inject
     SettingUseCase mUseCase;
-
-    /**
-     * The Context.
-     */
-    @Inject
-    Context context;
 
     /**
      * The Setting observer.

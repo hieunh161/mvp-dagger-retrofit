@@ -36,7 +36,7 @@ public class PhotoListModule {
      */
     @ActivityScope
     @Provides
-    PhotoApiService getLoginApiService(Retrofit retrofit){
+    PhotoApiService providePhotoApiSrvice(Retrofit retrofit){
         return retrofit.create(PhotoApiService.class);
     }
 
