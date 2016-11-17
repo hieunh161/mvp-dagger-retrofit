@@ -31,7 +31,6 @@ public abstract class UseCase {
     public <T> void subscribe(Observer<T> observer) {
         this.subscription = getObservable()
                 .subscribeOn(Schedulers.newThread())
-                // .toSingle()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observer);
     }

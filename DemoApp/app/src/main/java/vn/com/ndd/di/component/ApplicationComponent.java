@@ -7,6 +7,7 @@ import javax.inject.Singleton;
 import dagger.Component;
 import retrofit2.Retrofit;
 import vn.com.ndd.di.module.ApplicationModule;
+import vn.com.ndd.di.module.NetworkModule;
 
 /**
  * Created by hieunh on 11/10/2016.
@@ -14,7 +15,7 @@ import vn.com.ndd.di.module.ApplicationModule;
  * You can contact me at hieunh161@gmail.com
  */
 @Singleton
-@Component(modules = ApplicationModule.class)
+@Component(modules = {ApplicationModule.class, NetworkModule.class})
 public interface ApplicationComponent {
     // void inject(MyApplication application);
     // Any dependency you want to provide to the child scopes,

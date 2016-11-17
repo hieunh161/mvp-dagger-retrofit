@@ -3,6 +3,7 @@ package vn.com.ndd.presentation.view.fragment;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.widget.EditText;
 
@@ -18,6 +19,9 @@ import vn.com.ndd.presentation.base.BaseFragment;
 import vn.com.ndd.presentation.presenter.LoginPresenter;
 import vn.com.ndd.presentation.view.LoginView;
 
+import static vn.com.ndd.utils.Preconditions.checkNotNull;
+
+
 /**
  * Created by hieunh on 11/12/2016.
  * for NDD
@@ -31,8 +35,12 @@ public class LoginFragment extends BaseFragment implements LoginView{
     @BindView(R.id.input_password)
     EditText mInputPassword;
 
-    @Inject
     LoginPresenter mLoginPresenter;
+
+    @Inject
+    public void setPresenter(@NonNull LoginPresenter presenter) {
+        this.mLoginPresenter = checkNotNull(presenter);
+    }
 
     private ProgressDialog mProgressDialog;
 

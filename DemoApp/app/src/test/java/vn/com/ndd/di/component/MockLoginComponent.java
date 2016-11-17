@@ -3,6 +3,7 @@ package vn.com.ndd.di.component;
 import dagger.Component;
 import vn.com.ndd.di.module.MockLoginModule;
 import vn.com.ndd.di.scope.ActivityScope;
+import vn.com.ndd.presentation.view.fragment.LoginFragment;
 
 /**
  * Created by hieunh on 11/15/2016.
@@ -12,4 +13,5 @@ import vn.com.ndd.di.scope.ActivityScope;
 @ActivityScope
 @Component(modules = MockLoginModule.class, dependencies = MockApplicationComponent.class)
 public interface MockLoginComponent extends LoginComponent{
+    void inject(LoginFragment fragment);
 }

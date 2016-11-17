@@ -4,6 +4,7 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 import vn.com.ndd.di.module.MockApplicationModule;
+import vn.com.ndd.di.module.MockNetworkModule;
 
 /**
  * Created by hieunh on 11/15/2016.
@@ -12,6 +13,6 @@ import vn.com.ndd.di.module.MockApplicationModule;
  */
 
 @Singleton
-@Component(modules = { MockApplicationModule.class })
+@Component(modules = { MockApplicationModule.class, MockNetworkModule.class})
 public interface MockApplicationComponent extends ApplicationComponent {
 }
