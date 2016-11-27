@@ -1,4 +1,4 @@
-package vn.com.ndd.utils;
+package vn.com.ndd.common;
 
 import rx.Subscriber;
 

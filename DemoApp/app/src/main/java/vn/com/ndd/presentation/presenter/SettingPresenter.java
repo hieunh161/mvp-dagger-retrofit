@@ -21,6 +21,30 @@ public class SettingPresenter extends BasePresenter<SettingView>{
     SettingUseCase mUseCase;
 
     /**
+     * Instantiates a new Setting presenter.
+     */
+    @Inject
+    public SettingPresenter(){}
+
+    /**
+     * Load setting data.
+     */
+    public void loadSettingData(){
+        mUseCase.setLoadSettingObserver();
+        mUseCase.subscribe(settingObserver);
+    }
+
+    /**
+     * Save setting.
+     *
+     * @param setting the setting
+     */
+    public void saveSetting(Setting setting){
+        mUseCase.setSaveSettingObserver(setting);
+        mUseCase.subscribe(saveSettingObserver);
+    }
+
+    /**
      * The Setting observer.
      */
     Observer<Setting> settingObserver = new Observer<Setting>() {
@@ -45,66 +69,19 @@ public class SettingPresenter extends BasePresenter<SettingView>{
      */
     Observer<Void> saveSettingObserver = new Observer<Void>() {
 
-        /**
-         * Notifies the Observer that the {@link rx.Observable} has finished sending push-based notifications.
-         * <p>
-         * The {@link rx.Observable} will not call this method if it calls {@link #onError}.
-         */
         @Override
         public void onCompleted() {
 
         }
 
-        /**
-         * Notifies the Observer that the {@link rx.Observable} has experienced an error condition.
-         * <p>
-         * If the {@link rx.Observable} calls this method, it will not thereafter call {@link #onNext} or
-         * {@link #onCompleted}.
-         *
-         * @param e the exception encountered by the Observable
-         */
         @Override
         public void onError(Throwable e) {
 
         }
 
-        /**
-         * Provides the Observer with a new item to observe.
-         * <p>
-         * The {@link rx.Observable} may call this method 0 or more times.
-         * <p>
-         * The {@code Observable} will not call this method again after it calls either {@link #onCompleted} or
-         * {@link #onError}.
-         *
-         * @param aVoid the item emitted by the Observable
-         */
         @Override
         public void onNext(Void aVoid) {
 
         }
     };
-
-    /**
-     * Instantiates a new Setting presenter.
-     */
-    @Inject
-    public SettingPresenter(){}
-
-    /**
-     * Load setting data.
-     */
-    public void loadSettingData(){
-        mUseCase.setLoadSettingObserver();
-        mUseCase.subscribe(settingObserver);
-    }
-
-    /**
-     * Save setting.
-     *
-     * @param setting the setting
-     */
-    public void saveSetting(Setting setting){
-        mUseCase.setSaveSettingObserver(setting);
-        mUseCase.subscribe(saveSettingObserver);
-    }
 }

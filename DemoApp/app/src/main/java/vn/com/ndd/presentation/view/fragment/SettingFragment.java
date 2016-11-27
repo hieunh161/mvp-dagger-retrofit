@@ -28,7 +28,6 @@ public class SettingFragment extends BaseFragment implements SettingView {
     /**
      * The M presenter.
      */
-    @Inject
     SettingPresenter mPresenter;
 
     /**
@@ -47,6 +46,11 @@ public class SettingFragment extends BaseFragment implements SettingView {
     @Override
     protected int getContentView() {
         return R.layout.fragment_setting;
+    }
+
+    @Inject
+    public void setPresenter(SettingPresenter presenter){
+        this.mPresenter = presenter;
     }
 
     @Override

@@ -9,10 +9,10 @@ import rx.Subscriber;
 import rx.subjects.PublishSubject;
 import vn.com.ndd.data.entity.Setting;
 import vn.com.ndd.data.repository.SharedPreferencesRepository;
-import vn.com.ndd.utils.Constants;
-import vn.com.ndd.utils.SubscriptionUtils;
+import vn.com.ndd.common.Constants;
+import vn.com.ndd.common.SubscriptionUtils;
 
-import static vn.com.ndd.utils.Constants.KEY_PREF_BASE_URL;
+import static vn.com.ndd.common.Constants.KEY_PREF_BASE_URL;
 
 
 /**
@@ -49,15 +49,5 @@ public class SharedPreferencesRepositoryImpl implements SharedPreferencesReposit
                 SubscriptionUtils.onNextAndComplete(subscriber);
             }
         });
-    }
-
-    /**
-     * Gets base url.
-     *
-     * @return the base url
-     */
-    @Override
-    public Observable<String> getBaseUrl() {
-        return Observable.just(mPrefs.getString(KEY_PREF_BASE_URL, Constants.BASE_URL));
     }
 }

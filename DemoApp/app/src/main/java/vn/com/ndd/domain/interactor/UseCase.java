@@ -6,6 +6,8 @@ import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.Subscriptions;
+import vn.com.ndd.domain.executor.PostExecutionThread;
+import vn.com.ndd.domain.executor.ThreadExecutor;
 
 /**
  * Created by hieunh on 11/12/2016.
@@ -16,6 +18,9 @@ import rx.subscriptions.Subscriptions;
  * </p>
  */
 public abstract class UseCase {
+
+    private final ThreadExecutor threadExecutor = null;
+    private final PostExecutionThread postExecutionThread = null;
 
     // use for un-subscribe
     private Subscription subscription = Subscriptions.empty();

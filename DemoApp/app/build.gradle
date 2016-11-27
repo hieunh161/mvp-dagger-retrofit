@@ -48,6 +48,14 @@ dependencies {
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
     compile 'com.jakewharton:butterknife:8.4.0'
 
+    // Logger
+    compile 'com.orhanobut:logger:1.15'
+
+    //Lollipin
+    compile ('com.github.orangegangsters:lollipin:2.0.0@aar') {
+        transitive = true
+    }
+
     testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-core:2.2.11'
     testCompile 'org.robolectric:robolectric:3.1.4'

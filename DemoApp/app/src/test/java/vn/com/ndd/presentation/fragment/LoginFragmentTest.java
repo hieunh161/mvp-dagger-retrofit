@@ -87,7 +87,7 @@ public class LoginFragmentTest {
     @Test
     public void shouldShowErrorDialog(){
         fragment.showErrorDialog(R.string.dialog_title_error, R.string.dialog_message_network_not_available);
-//        AlertDialog alert = ShadowAlertDialog.getLatestAlertDialog();
+        AlertDialog alert = ShadowAlertDialog.getLatestAlertDialog();
 //        assertThat(alert.isShowing(), equalTo(true));
 //        assertThat(((String) shadowOf(alert).getTitle()), equalTo("Error"));
 //        assertThat(((String) shadowOf(alert).getMessage()), equalTo("Network is not available"));

@@ -1,4 +1,4 @@
-package vn.com.ndd.utils;
+package vn.com.ndd.common;
 
 /**
  * Created by hieunh on 11/18/2016.

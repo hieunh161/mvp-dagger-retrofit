@@ -4,7 +4,6 @@ import android.util.Log;
 
 import javax.inject.Inject;
 
-import rx.Observable;
 import rx.Observer;
 import vn.com.ndd.R;
 import vn.com.ndd.data.entity.LoginAccount;
@@ -67,24 +66,11 @@ public class LoginPresenter extends BasePresenter<LoginView> {
      * The Login observer.
      */
     Observer<LoginResponse> loginObserver = new Observer<LoginResponse>() {
-        /**
-         * Notifies the Observer that the {@link Observable} has finished sending push-based notifications.
-         * <p>
-         * The {@link Observable} will not call this method if it calls {@link #onError}.
-         */
         @Override
         public void onCompleted() {
             Log.d("LoginPresenter","onCompleted");
         }
 
-        /**
-         * Notifies the Observer that the {@link Observable} has experienced an error condition.
-         * <p>
-         * If the {@link Observable} calls this method, it will not thereafter call {@link #onNext} or
-         * {@link #onCompleted}.
-         *
-         * @param e the exception encountered by the Observable
-         */
         @Override
         public void onError(Throwable e) {
             Log.d("LoginPresenter","onError " + e.toString());
@@ -93,16 +79,6 @@ public class LoginPresenter extends BasePresenter<LoginView> {
             getView().showErrorDialog(R.string.dialog_title_error, R.string.dialog_message_login_fail);
         }
 
-        /**
-         * Provides the Observer with a new item to observe.
-         * <p>
-         * The {@link Observable} may call this method 0 or more times.
-         * <p>
-         * The {@code Observable} will not call this method again after it calls either {@link #onCompleted} or
-         * {@link #onError}.
-         *
-         * @param loginResponse the item emitted by the Observable
-         */
         @Override
         public void onNext(LoginResponse loginResponse) {
             Log.d("LoginPresenter","onError " + loginResponse.getStatus());

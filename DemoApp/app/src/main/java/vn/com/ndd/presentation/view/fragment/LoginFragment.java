@@ -19,7 +19,7 @@ import vn.com.ndd.presentation.base.BaseFragment;
 import vn.com.ndd.presentation.presenter.LoginPresenter;
 import vn.com.ndd.presentation.view.LoginView;
 
-import static vn.com.ndd.utils.Preconditions.checkNotNull;
+import static vn.com.ndd.common.Preconditions.checkNotNull;
 
 
 /**
