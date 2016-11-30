@@ -1,4 +1,4 @@
-package vn.com.ndd.presentation.activity;
+package vn.com.ndd.presentation.view.activity;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

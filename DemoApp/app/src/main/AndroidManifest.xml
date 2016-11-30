@@ -12,22 +12,21 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".presentation.activity.SplashActivity">
+        <activity android:name=".presentation.view.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.activity.LoginActivity">
+        <activity android:name=".presentation.view.activity.LoginActivity">
         </activity>
-        <activity android:name=".presentation.activity.PhotoListActivity">
+        <activity android:name=".presentation.view.activity.PhotoListActivity">
         </activity>
-        <activity android:name=".presentation.activity.SettingActivity">
+        <activity android:name=".presentation.view.activity.SettingActivity">
         </activity>
-        <activity android:name=".presentation.activity.PinCodeActivity">
+        <activity android:name=".presentation.view.activity.PinCodeActivity">
         </activity>
-        <activity android:name=".presentation.activity.SecurityCodeActivity"
-            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
+        <activity android:name=".presentation.view.activity.SecurityCodeActivity">
         </activity>
     </application>
 

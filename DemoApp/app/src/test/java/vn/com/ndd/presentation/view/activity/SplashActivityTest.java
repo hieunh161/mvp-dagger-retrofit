@@ -1,4 +1,4 @@
-package vn.com.ndd.presentation.activity;
+package vn.com.ndd.presentation.view.activity;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

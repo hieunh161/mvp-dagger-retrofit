@@ -1,4 +1,4 @@
-package vn.com.ndd.presentation.activity;
+package vn.com.ndd.presentation.view.activity;
 
 import com.github.orangegangsters.lollipin.lib.managers.AppLockActivity;
 

@@ -14,7 +14,7 @@ import butterknife.OnClick;
 import vn.com.ndd.R;
 import vn.com.ndd.di.component.DaggerLoginComponent;
 import vn.com.ndd.di.module.LoginModule;
-import vn.com.ndd.presentation.activity.PhotoListActivity;
+import vn.com.ndd.presentation.view.activity.PhotoListActivity;
 import vn.com.ndd.presentation.base.BaseFragment;
 import vn.com.ndd.presentation.presenter.LoginPresenter;
 import vn.com.ndd.presentation.view.LoginView;

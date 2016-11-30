@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">DemoApp</string>
 
+    <!--input-->
     <string name="input_email_hint">Email</string>
     <string name="input_password_hint">Password</string>
     <string name="label_login">Login</string>
@@ -12,6 +13,8 @@
     <string name="exception_message_no_connection">Network is not available</string>
     <string name="dialog_title_error">Error</string>
     <string name="dialog_message_network_not_available">Network is not available</string>
+
+    <!--button-->
     <string name="btn_ok">Ok</string>
     <string name="title_menu_setting">Setting</string>
     <string name="input_server_address">Server Url</string>

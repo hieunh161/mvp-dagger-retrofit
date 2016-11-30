@@ -20,7 +20,7 @@ import org.robolectric.util.FragmentTestUtil;
 import vn.com.ndd.BuildConfig;
 import vn.com.ndd.R;
 import vn.com.ndd.application.MockMyApplication;
-import vn.com.ndd.presentation.activity.PhotoListActivity;
+import vn.com.ndd.presentation.view.activity.PhotoListActivity;
 import vn.com.ndd.presentation.presenter.LoginPresenter;
 import vn.com.ndd.presentation.view.fragment.LoginFragment;
 

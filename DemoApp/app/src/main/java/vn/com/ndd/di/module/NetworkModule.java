@@ -1,5 +1,9 @@
 package vn.com.ndd.di.module;
 
+import android.app.Application;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Named;
@@ -11,7 +15,6 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-import vn.com.ndd.common.Constants;
 
 /**
  * Created by hieunh on 11/16/2016.
@@ -20,6 +23,21 @@ import vn.com.ndd.common.Constants;
  */
 @Module
 public class NetworkModule {
+
+    /**
+     * The Base url.
+     */
+    String baseUrl;
+
+    /**
+     * Instantiates a new Network module.
+     *
+     * @param baseUrl the base url
+     */
+    public NetworkModule(String baseUrl){
+        this.baseUrl = baseUrl;
+    }
+
     /**
      * Provide gson coverter factory gson converter factory.
      *
@@ -68,6 +86,19 @@ public class NetworkModule {
         return RxJavaCallAdapterFactory.create();
     }
 
+    // TODO: need decision on design
+    /**
+     * Provides shared preferences shared preferences.
+     *
+     * @param application the application
+     * @return the shared preferences
+     */
+    @Provides
+    @Singleton
+    SharedPreferences providesSharedPreferences(Application application) {
+        return PreferenceManager.getDefaultSharedPreferences(application);
+    }
+
     /**
      * Provide retrofit retrofit.
      *
@@ -82,7 +113,7 @@ public class NetworkModule {
                              RxJavaCallAdapterFactory adapterFactory,
                              @Named("default-timeout") OkHttpClient client){
         return new Retrofit.Builder()
-                .baseUrl(Constants.BASE_URL)
+                .baseUrl(baseUrl)
                 .addConverterFactory(converterFactory)
                 .addCallAdapterFactory(adapterFactory)
                 .client(client)  // custom client

@@ -1,4 +1,4 @@
-package vn.com.ndd.presentation.activity;
+package vn.com.ndd.presentation.view.activity;
 
 import android.app.Fragment;
 import android.content.Intent;

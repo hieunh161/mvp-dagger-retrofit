@@ -1,10 +1,11 @@
-package vn.com.ndd.presentation.activity;
+package vn.com.ndd.presentation.view.activity;
 
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 
+import com.github.orangegangsters.lollipin.lib.managers.AppLock;
 import com.orhanobut.logger.Logger;
 
 import vn.com.ndd.presentation.base.BaseActivity;
@@ -17,8 +18,14 @@ import vn.com.ndd.presentation.base.BaseActivity;
 
 public abstract class SecuredActivity extends BaseActivity {
 
+    private static final int REQUEST_CODE_ENABLE = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // if custom pin is not setup -> do it
+        Intent intent = new Intent(this, SecurityCodeActivity.class);
+        intent.putExtra(AppLock.EXTRA_TYPE, AppLock.ENABLE_PINLOCK);
+        startActivityForResult(intent, REQUEST_CODE_ENABLE);
         // initialize receiver
         IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_ON);
         filter.addAction(Intent.ACTION_SCREEN_OFF);

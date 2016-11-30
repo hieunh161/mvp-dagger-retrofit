@@ -2,6 +2,7 @@ package vn.com.ndd.application;
 
 import android.app.Application;
 
+import vn.com.ndd.common.Constants;
 import vn.com.ndd.di.component.ApplicationComponent;
 import vn.com.ndd.di.component.DaggerApplicationComponent;
 import vn.com.ndd.di.module.ApplicationModule;
@@ -26,7 +27,7 @@ public class MyApplication extends Application {
     protected void initializeApplicationComponent() {
         mApplicationComponent = DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(getApplicationContext()))
-                .networkModule(new NetworkModule())
+                .networkModule(new NetworkModule(Constants.BASE_URL))
                 .build();
     }
 
